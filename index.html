@@ -103,6 +103,23 @@
     </ul>
 
     <script>
+        document.querySelector('[type="search"]').addEventListener('change', e => {
+            search(e.target.value)
+        })
+
+        function search (text) {
+            const nodeList = document.querySelectorAll('li')
+            const regex = new RegExp(text)
+
+            nodeList.forEach((el, idx) => {
+                if (regex.test(el.innerText)) {
+                    // TODO
+                } else {
+                    // TODO
+                }
+            })
+        }
+
         const form = document.querySelector('form')
 
         form.addEventListener('submit', e => {
