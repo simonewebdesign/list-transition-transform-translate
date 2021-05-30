@@ -45,6 +45,7 @@
             font-size: 1.5rem;
             margin: auto;
             display: flex;
+            transition: transform .5s;
         }
 
         li + li {
@@ -69,7 +70,7 @@
 <body>
     <form>
         <input type="search" placeholder="Search...">
-        <button>Shuffle</button>
+        <button onclick="shuffle()">Shuffle</button>
         <button>Sort A-Z</button>
 
         Filter by
@@ -123,6 +124,38 @@
             document.querySelectorAll('li').forEach(el => {
                 el.hidden = el.dataset.type !== type
             })
+        }
+
+        const itemsCount = document.querySelectorAll('li').length
+        const itemSize = 50 // height:40 + margin:10
+        const x = CSS.px(0)
+
+        function shuffle () {
+            const arr = poorShuffle(randomArray(itemsCount))
+            const nodeList = document.querySelectorAll('li')
+
+            nodeList.forEach((el, idx) => {
+                const currentPos = Array.prototype.indexOf.call(nodeList, el)
+                const newPos = arr[idx]
+                const posOffset = currentPos - newPos
+                const offset = posOffset > currentPos ? posOffset * itemSize : -posOffset * itemSize
+                const y = CSS.px(offset)
+                el.attributeStyleMap.set('transform', new CSSTranslate(x, y))
+            })
+        }
+
+        function randomArray (length, step = 1) {
+            let arr = []
+            const len = length * step
+            for (let i = 0; i < len; i += step) {
+                arr.push(i)
+            }
+            return arr
+        }
+
+        function poorShuffle (arr) {
+            // https://stackoverflow.com/a/18650169/801544
+            return arr.sort(() => .5 - Math.random())
         }
     </script>
 </body>
