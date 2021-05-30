@@ -72,7 +72,7 @@
     <form>
         <input type="search" placeholder="Search...">
         <button onclick="shuffle()">Shuffle</button>
-        <button>Sort A-Z</button>
+        <button onclick="sort()">Sort A-Z</button>
 
         Filter by
         <input type="radio" name="filter" id="animal" value="animal">
@@ -130,6 +130,24 @@
         const itemsCount = document.querySelectorAll('li').length
         const itemSize = 50 // height:40 + margin:10
         const x = CSS.px(0)
+
+        function sort () {
+            const nodeList = document.querySelectorAll('li')
+            const sortedArray = Array.from(nodeList).sort(sortByName)
+
+            nodeList.forEach((el, idx) => {
+                const currentPos = Array.prototype.indexOf.call(nodeList, el)
+                const newPos = sortedArray.findIndex(sortedEl => sortedEl.innerText === el.innerText)
+                const posOffset = currentPos - newPos
+                const offset = posOffset > currentPos ? posOffset * itemSize : -posOffset * itemSize
+                const y = CSS.px(offset)
+                el.attributeStyleMap.set('transform', new CSSTranslate(x, y))
+            })
+        }
+
+        function sortByName (a, b) {
+            return a.innerText.localeCompare(b.innerText)
+        }
 
         function shuffle () {
             const arr = poorShuffle(randomArray(itemsCount))
