@@ -17,7 +17,8 @@
         }
 
         form {
-            background: #0E5237;;
+            background: #0E5237;
+            border-radius: 5px;
         }
 
         button {
@@ -66,10 +67,17 @@
         <input type="search" placeholder="Search...">
         <button>Shuffle</button>
         <button>Sort A-Z</button>
+
         Filter by
-            <input type="radio" name="filter" value="animals"> Animals
-            <input type="radio" name="filter" value="fruits"> Fruits
-            <input type="radio" name="filter" value="vegetables"> Vegetables
+        <input id="animals" type="radio" name="filter" value="animals">
+        <label for="animals">Animals</label>
+
+        <input id="fruits" type="radio" name="filter" value="fruits">
+        <label for="fruits">Fruits</label>
+
+        <input id="vegetables" type="radio" name="filter" value="vegetables">
+        <label for="vegetables">Vegetables</label>
+
         <button type="reset">Reset</button>
     </form>
 
