@@ -63,10 +63,6 @@
             text-shadow: none;
         }
 
-        [hidden] {
-            display: none;
-        }
-
         .transparent {
             opacity: 0;
         }
@@ -140,7 +136,8 @@
 
         form.addEventListener('reset', e => {
             document.querySelectorAll('li').forEach(el => {
-                el.hidden = false
+                el.classList.remove('transparent')
+                el.style.transform = null
             })
         })
 
@@ -151,8 +148,22 @@
         })
 
         function filterBy (type) {
-            document.querySelectorAll('li').forEach(el => {
-                el.hidden = el.dataset.type !== type
+            const nodeList = document.querySelectorAll('li')
+            let posCounter = 0
+
+            nodeList.forEach((el, idx) => {
+                el.classList.remove('transparent')
+
+                if (el.dataset.type === type) {
+                    const currentPos = Array.prototype.indexOf.call(nodeList, el)
+                    const newPos = posCounter++
+                    const posOffset = currentPos - newPos
+                    const offset = posOffset > currentPos ? posOffset * itemSize : -posOffset * itemSize
+                    const y = CSS.px(offset)
+                    el.attributeStyleMap.set('transform', new CSSTranslate(x, y))
+                } else {
+                    el.classList.add('transparent')
+                }
             })
         }
 
