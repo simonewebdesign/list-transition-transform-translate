@@ -46,7 +46,7 @@
             font-size: 1.5rem;
             margin: auto;
             display: flex;
-            transition: transform .5s;
+            transition: transform .5s, opacity .33s;
         }
 
         li + li {
@@ -65,6 +65,10 @@
 
         [hidden] {
             display: none;
+        }
+
+        .transparent {
+            opacity: 0;
         }
     </style>
 </head>
@@ -103,19 +107,27 @@
     </ul>
 
     <script>
-        document.querySelector('[type="search"]').addEventListener('change', e => {
+        document.querySelector('[type="search"]').addEventListener('keyup', e => {
             search(e.target.value)
         })
 
         function search (text) {
             const nodeList = document.querySelectorAll('li')
-            const regex = new RegExp(text)
+            const regex = new RegExp(text, 'i')
+            let posCounter = 0
 
             nodeList.forEach((el, idx) => {
+                el.classList.remove('transparent')
+
                 if (regex.test(el.innerText)) {
-                    // TODO
+                    const currentPos = Array.prototype.indexOf.call(nodeList, el)
+                    const newPos = posCounter++
+                    const posOffset = currentPos - newPos
+                    const offset = posOffset > currentPos ? posOffset * itemSize : -posOffset * itemSize
+                    const y = CSS.px(offset)
+                    el.attributeStyleMap.set('transform', new CSSTranslate(x, y))
                 } else {
-                    // TODO
+                    el.classList.add('transparent')
                 }
             })
         }
