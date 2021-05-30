@@ -60,6 +60,10 @@
             margin-left: auto;
             text-shadow: none;
         }
+
+        [hidden] {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -69,14 +73,14 @@
         <button>Sort A-Z</button>
 
         Filter by
-        <input id="animals" type="radio" name="filter" value="animals">
-        <label for="animals">Animals</label>
+        <input type="radio" name="filter" id="animal" value="animal">
+        <label for="animal">Animals</label>
 
-        <input id="fruits" type="radio" name="filter" value="fruits">
-        <label for="fruits">Fruits</label>
+        <input type="radio" name="filter" id="fruit" value="fruit">
+        <label for="fruit">Fruits</label>
 
-        <input id="vegetables" type="radio" name="filter" value="vegetables">
-        <label for="vegetables">Vegetables</label>
+        <input type="radio" name="filter" id="vegetable" value="vegetable">
+        <label for="vegetable">Vegetables</label>
 
         <button type="reset">Reset</button>
     </form>
@@ -95,5 +99,23 @@
         <li data-type="fruit"><span>Kiwi</span><span>🥝</span></li>
         <li data-type="fruit"><span>Coconut</span><span>🥥</span></li>
     </ul>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', e => {
+            e.preventDefault()
+        })
+
+        document.querySelectorAll('[type="radio"]').forEach(radioBtn => {
+            radioBtn.addEventListener('change', e => {
+                filterBy(e.target.value)
+            })
+        })
+
+        function filterBy (type) {
+            document.querySelectorAll('li').forEach(el => {
+                el.hidden = el.dataset.type !== type
+            })
+        }
+    </script>
 </body>
 </html>
