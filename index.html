@@ -1,23 +1,44 @@
-List Trans(-ition|-form|-late)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animals, fruits and vegetables</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Animals, fruits and vegetables</h1>
 
-Search | Shuffle | Sort A-Z | Filter
+    <form>
+        <input type="search" placeholder="Search"> |
+        <button>Shuffle</button> |
+        <button>Sort A-Z</button> |
+        Filter by
+            <input type="radio" name="filter" value="animals"> Animals
+            <input type="radio" name="filter" value="fruits"> Fruits
+            <input type="radio" name="filter" value="vegetables"> Vegetables
+        <button type="reset">Reset</button>
+    </form>
 
-Vegetables
-    Broccoli 🥦
-    Carrot 🥕
-    Avocado 🥑
-    Potato 🥔
-
-Animals
-    Duck 🦆
-    Rabbit 🐇
-    Giraffe 🦒
-    Horse 🐎
-    Kangaroo 🦘
-
-Fruits
-    Apple 🍎
-    Mango 🥭
-    Kiwi 🥝
-    Watermelon 🍉
-    Coconut 🥥
+    <ul>
+        <li data-type="vegetable">Broccoli 🥦</li>
+        <li data-type="vegetable">Carrot 🥕</li>
+        <li data-type="vegetable">Avocado 🥑</li>
+        <li data-type="vegetable">Potato 🥔</li>
+        <li data-type="animal">Duck 🦆</li>
+        <li data-type="animal">Rabbit 🐇</li>
+        <li data-type="animal">Giraffe 🦒</li>
+        <li data-type="animal">Horse 🐎</li>
+        <li data-type="animal">Kangaroo 🦘</li>
+        <li data-type="fruit">Apple 🍎</li>
+        <li data-type="fruit">Mango 🥭</li>
+        <li data-type="fruit">Kiwi 🥝</li>
+        <li data-type="fruit">Watermelon 🍉</li>
+        <li data-type="fruit">Coconut 🥥</li>
+    </ul>
+</body>
+</html>
