@@ -4,19 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animals, fruits and vegetables</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
             text-align: center;
+            font-family: "Nunito", "Helvetica Neue", Helvetica, sans-serif;
+
+            /* by Logan McBroom - http://projects.verou.me/css3patterns/#microbial-mat */
+            background: radial-gradient(circle at 0% 50%, rgba(96, 16, 48, 0) 9px, rgb(102, 17, 51) 10px, rgba(96, 16, 48, 0) 11px) 0px 10px / 20px 20px, radial-gradient(at 100% 100%, rgba(96, 16, 48, 0) 9px, rgb(102, 17, 51) 10px, rgba(96, 16, 48, 0) 11px), rgb(136, 170, 51); --darkreader-inline-bgimage:radial-gradient(circle at 0% 50%, rgba(77, 13, 38, 0) 9px, #520e29 10px, rgba(77, 13, 38, 0) 11px), radial-gradient(at 100% 100%, rgba(77, 13, 38, 0) 9px, #520e29 10px, rgba(77, 13, 38, 0) 11px), initial; --darkreader-inline-bgcolor:#6d8829;
+            color: white;
+        }
+
+        form {
+            background: #0E5237;;
+        }
+
+        button {
+            margin: 10px;
+        }
+
+        button, input {
+            font-family: inherit
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            height: 40px;
+            background: #520e29;
+            border-radius: 25px;
+            width: 135px;
+            line-height: 40px;
+            padding-left: 15px;
+            box-shadow: 3px 3px black;
+            transform: translateY(0);
+            font-size: 1.5rem;
+            margin: auto;
+            display: flex;
+        }
+
+        li + li {
+           margin-top: 10px;
+        }
+
+        span:first-child {
+            text-shadow: 2px 2px 0 black;
+        }
+
+        span + span {
+            font-size: 3rem;
+            margin-left: auto;
+            text-shadow: none;
         }
     </style>
 </head>
 <body>
-    <h1>Animals, fruits and vegetables</h1>
-
     <form>
-        <input type="search" placeholder="Search"> |
-        <button>Shuffle</button> |
-        <button>Sort A-Z</button> |
+        <input type="search" placeholder="Search...">
+        <button>Shuffle</button>
+        <button>Sort A-Z</button>
         Filter by
             <input type="radio" name="filter" value="animals"> Animals
             <input type="radio" name="filter" value="fruits"> Fruits
@@ -25,20 +74,18 @@
     </form>
 
     <ul>
-        <li data-type="vegetable">Broccoli 🥦</li>
-        <li data-type="vegetable">Carrot 🥕</li>
-        <li data-type="vegetable">Avocado 🥑</li>
-        <li data-type="vegetable">Potato 🥔</li>
-        <li data-type="animal">Duck 🦆</li>
-        <li data-type="animal">Rabbit 🐇</li>
-        <li data-type="animal">Giraffe 🦒</li>
-        <li data-type="animal">Horse 🐎</li>
-        <li data-type="animal">Kangaroo 🦘</li>
-        <li data-type="fruit">Apple 🍎</li>
-        <li data-type="fruit">Mango 🥭</li>
-        <li data-type="fruit">Kiwi 🥝</li>
-        <li data-type="fruit">Watermelon 🍉</li>
-        <li data-type="fruit">Coconut 🥥</li>
+        <li data-type="vegetable"><span>Broccoli</span><span>🥦</span></li>
+        <li data-type="vegetable"><span>Carrot</span><span>🥕</span></li>
+        <li data-type="vegetable"><span>Avocado</span><span>🥑</span></li>
+        <li data-type="vegetable"><span>Potato</span><span>🥔</span></li>
+        <li data-type="animal"><span>Duck</span><span>🦆</span></li>
+        <li data-type="animal"><span>Rabbit</span><span>🐇</span></li>
+        <li data-type="animal"><span>Giraffe</span><span>🦒</span></li>
+        <li data-type="animal"><span>Horse</span><span>🐎</span></li>
+        <li data-type="fruit"><span>Apple</span><span>🍎</span></li>
+        <li data-type="fruit"><span>Mango</span><span>🥭</span></li>
+        <li data-type="fruit"><span>Kiwi</span><span>🥝</span></li>
+        <li data-type="fruit"><span>Coconut</span><span>🥥</span></li>
     </ul>
 </body>
 </html>
